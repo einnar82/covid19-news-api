@@ -12,8 +12,11 @@
   "license": "ISC",
   "dependencies": {
     "apicache": "^1.5.3",
+    "axios": "^0.19.2",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "tesseract.js": "^2.0.2",
+    "uest": "^1.0.20",
     "x-ray": "^2.3.4"
   },
   "devDependencies": {
