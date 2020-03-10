@@ -4,7 +4,8 @@
   "description": "A collection of news and FAQs about COVID19 (Coronavirus Disease - 2019)",
   "main": "src/index.js",
   "scripts": {
-    "start": "nodemon src/index.js"
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
   },
   "keywords": [],
   "author": "Rannie Ollit <einnar82@gmail.com>",
