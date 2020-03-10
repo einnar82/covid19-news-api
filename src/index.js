@@ -9,6 +9,13 @@ const port = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(cache("5 minutes"));
-app.use("/api/covid19", router.routes);
+app.use("/api/covid19", router);
+
+app.get("/", (request, response) => {
+  response.json({
+    message: "Welcome to COVID19 NEWS API",
+    link: "https://github.com/einnar82/covid19-news-api"
+  });
+});
 
 app.listen(port, () => console.log(`App listening on port ${port}`));
