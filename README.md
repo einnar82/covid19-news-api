@@ -9,4 +9,4 @@ A collection of news and FAQs about COVID19 (Coronavirus Disease - 2019)
 **Available endpoints:**
 |Endpoint|Method |
 |--|--|
-| /api/covid19/faqs | GET |
+| [/api/covid19/faqs](http://covid19-news.herokuapp.com/api/covid19/faqs) | GET |
