@@ -1,5 +1,10 @@
 const services = require("../services");
-const { crawlCovid19Faqs, crawlSituationReports, crawlPublicAdvice } = services;
+const {
+  crawlCovid19Faqs,
+  crawlSituationReports,
+  crawlPublicAdvice,
+  crawlNews
+} = services;
 const getTextFromImage = require("../services/ocr");
 
 const controllers = {
@@ -62,6 +67,24 @@ const controllers = {
           "https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public",
         title: title.replace(/\r?\n|\r/g, "").trim(),
         content: filteredContent
+      });
+    });
+  },
+  newsController: (request, response) => {
+    crawlNews(data => {
+      const { titles, links, dates } = data;
+      const trimmedDates = dates.map(date =>
+        date.replace(/I Speech/g, "").trim()
+      );
+      const trimmedTitles = titles.map((title, index) => {
+        return {
+          title: title.replace(/\r?\n|\r/g, "").trim(),
+          link: links[index],
+          date: trimmedDates[index]
+        };
+      });
+      response.json({
+        data: trimmedTitles
       });
     });
   }

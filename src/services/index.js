@@ -14,6 +14,10 @@ const publicAdviceURL =
   process.env.PUBLIC_ADVICE_URL ||
   "https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public";
 
+const newsURL =
+  process.env.NEWS_URL ||
+  "https://www.who.int/emergencies/diseases/novel-coronavirus-2019/media-resources/news";
+
 const services = {
   crawlCovid19Faqs: callback => {
     x(faqURL, "div#sf-accordion", [
@@ -41,6 +45,17 @@ const services = {
       title: ".section-heading",
       content: ["div.sf-content-block.content-block > div"]
     }).then(callback);
+  },
+  crawlNews: callback => {
+    x(
+      newsURL,
+      "div#PageContent_C003_Col01 div.list-view.highlight-widget div.list-view--item.highlight-widget--content",
+      {
+        titles: ["a div.table-cell.info p.heading.text-underline"],
+        links: ["a@href"],
+        dates: ["a div.table-cell.info p.sub-title"]
+      }
+    ).then(callback);
   }
 };
 
