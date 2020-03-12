@@ -1,5 +1,5 @@
 const services = require("../services");
-const { crawlCovid19Faqs, crawlSituationReports } = services;
+const { crawlCovid19Faqs, crawlSituationReports, crawlPublicAdvice } = services;
 const getTextFromImage = require("../services/ocr");
 
 const controllers = {
@@ -21,7 +21,7 @@ const controllers = {
 
       response.json({
         source: "https://www.who.int/news-room/q-a-detail/q-a-coronaviruses",
-        faq: faqList
+        data: faqList
       });
     });
   },
@@ -48,24 +48,23 @@ const controllers = {
         data: situations.slice(0, 5)
       });
     });
+  },
+  protectiveMeasuresController: (request, response) => {
+    crawlPublicAdvice(data => {
+      const { title, content } = data;
+      const filteredContent = content
+        .filter(item => item !== "")
+        .map((item, index) => {
+          return item.replace(/\r?\n|\r/g, "").trim();
+        });
+      response.json({
+        source:
+          "https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public",
+        title: title.replace(/\r?\n|\r/g, "").trim(),
+        content: filteredContent
+      });
+    });
   }
-  // worldTallyController: (request, response) => {
-  //   request.uest(
-  //     {
-  //       method: "GET",
-  //       url: "/api/covid19/latest-situations"
-  //     },
-  //     (error, resp, body) => {
-  //       const { data } = body;
-  //       const [latestReport, ...otherReports] = data;
-  //       getTextFromImage(latestReport.link).then(xx => {
-  //         response.json({
-  //           xx
-  //         });
-  //       });
-  //     }
-  //   );
-  // }
 };
 
 module.exports = controllers;

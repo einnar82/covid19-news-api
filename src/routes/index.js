@@ -4,11 +4,11 @@ const router = express.Router();
 const {
   faqController,
   situationReportsController,
-  worldTallyController
+  protectiveMeasuresController
 } = controllers;
 
 router.get("/faqs", faqController);
 router.get("/latest-situations", situationReportsController);
-// router.get("/world-tally", worldTallyController);
+router.get("/protective-measures", protectiveMeasuresController);
 
 module.exports = router;

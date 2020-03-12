@@ -10,6 +10,10 @@ const locationsURL =
   process.env.LOCATION_URL ||
   "https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports/";
 
+const publicAdviceURL =
+  process.env.PUBLIC_ADVICE_URL ||
+  "https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public";
+
 const services = {
   crawlCovid19Faqs: callback => {
     x(faqURL, "div#sf-accordion", [
@@ -31,6 +35,12 @@ const services = {
         }
       ]
     ).then(callback);
+  },
+  crawlPublicAdvice: callback => {
+    x(publicAdviceURL, "div#PageContent_C003_Col01", {
+      title: ".section-heading",
+      content: ["div.sf-content-block.content-block > div"]
+    }).then(callback);
   }
 };
 
