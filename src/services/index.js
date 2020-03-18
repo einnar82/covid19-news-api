@@ -1,9 +1,9 @@
 const WHO = require("./who");
-const GMA = require("./gma");
+const localNews = require("./local-news");
 
 const services = {
   ...WHO,
-  ...GMA
+  ...localNews
 };
 
 module.exports = services;

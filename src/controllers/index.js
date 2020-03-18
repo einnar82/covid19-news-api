@@ -1,9 +1,9 @@
 const WHOController = require("./who.controller");
-const GMAController = require("./gma.controller");
+const LocalNewsController = require("./local-news.controller");
 
 const controllers = {
   ...WHOController,
-  ...GMAController
+  ...LocalNewsController
 };
 
 module.exports = controllers;
