@@ -7,7 +7,7 @@ const {
 } = services;
 
 const WHOController = {
-  faqController: (request, response) => {
+  getFAQs: (request, response) => {
     crawlCovid19Faqs(data => {
       const payload = data[0];
       const { questions, answers } = payload;
@@ -29,7 +29,7 @@ const WHOController = {
       });
     });
   },
-  situationReportsController: (request, response) => {
+  getSituationReports: (request, response) => {
     crawlSituationReports(data => {
       const payload = data[0];
       const { cases, links, dates } = payload;
@@ -53,7 +53,7 @@ const WHOController = {
       });
     });
   },
-  protectiveMeasuresController: (request, response) => {
+  getProtectiveMeasures: (request, response) => {
     crawlPublicAdvice(data => {
       const { title, content } = data;
       const filteredContent = content
@@ -69,7 +69,7 @@ const WHOController = {
       });
     });
   },
-  newsController: (request, response) => {
+  getWHONews: (request, response) => {
     crawlNews(data => {
       const { titles, links, dates } = data;
       const trimmedDates = dates.map(date =>

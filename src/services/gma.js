@@ -8,7 +8,7 @@ const checkpointURL =
 
 const GMA = {
   crawlCheckpoints: callback => {
-    x(faqURL, "div#story1", [
+    x(checkpointURL, "div#story1", [
       {
         title: "div.story_title"
       }

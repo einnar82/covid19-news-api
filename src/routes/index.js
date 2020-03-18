@@ -2,15 +2,17 @@ const express = require("express");
 const controllers = require("../controllers");
 const router = express.Router();
 const {
-  faqController,
-  situationReportsController,
-  protectiveMeasuresController,
-  newsController
+  getFAQs,
+  getSituationReports,
+  getProtectiveMeasures,
+  getWHONews,
+  getCheckpoints
 } = controllers;
 
-router.get("/faqs", faqController);
-router.get("/latest-situations", situationReportsController);
-router.get("/protective-measures", protectiveMeasuresController);
-router.get("/news", newsController);
+router.get("/faqs", getFAQs);
+router.get("/latest-situations", getSituationReports);
+router.get("/protective-measures", getProtectiveMeasures);
+router.get("/news", getWHONews);
+router.get("/metro-manila-checkpoints", getCheckpoints);
 
 module.exports = router;
