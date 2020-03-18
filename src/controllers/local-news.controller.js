@@ -78,7 +78,7 @@ const LocalNewsController = {
         },
         {
           district: QCPD,
-          location: null,
+          location: "Quezon City",
           checkpoints: []
         }
       ];
