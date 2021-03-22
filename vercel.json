@@ -1,0 +1,3 @@
+{
+  "rewrites": [{ "source": "/api/covid19/(.*)", "destination": "/api/covid19" }]
+}
