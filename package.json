@@ -2,10 +2,10 @@
   "name": "covid19-news-api",
   "version": "1.0.0",
   "description": "A collection of news and FAQs about COVID19 (Coronavirus Disease - 2019)",
-  "main": "src/index.js",
+  "main": "src/api/index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "nodemon src/index.js"
+    "start": "node src/api/index.js",
+    "dev": "nodemon src/api/index.js"
   },
   "keywords": [],
   "author": "Rannie Ollit <einnar82@gmail.com>",
